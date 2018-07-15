@@ -20,7 +20,6 @@ class ActionButton extends React.Component {
     }
 
     handleClick() {
-        //this.setState({clicks: 100});
         this.setState(prevState => ({
             clicks: prevState.clicks + 1
         }));
