@@ -8,3 +8,9 @@ body {
   color: #666;
   font-weight: 200;
 }
+
+button {
+  background-color: rgb(206, 185, 219);
+  font-size: 200%;
+  font-style: italic;
+}
