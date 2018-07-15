@@ -4,6 +4,11 @@ body {
   font-family: sans-serif;
 }
 
+.page-appearance {
+  width: 80%;
+  margin: auto;
+}
+
 .text-format {
   color: #666;
   font-weight: 200;

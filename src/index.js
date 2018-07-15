@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 
+//Component for basic city info
 function CityProfile(props) {
     return (
         <div>
@@ -12,6 +13,7 @@ function CityProfile(props) {
     );
 }
 
+//Search functionality component
 class ActionButton extends React.Component {
     constructor(props) {
         super(props);
@@ -35,6 +37,29 @@ class ActionButton extends React.Component {
     }
 }
 
+//The main component
+class WeatherInterface extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+
+    render() {
+        return (
+            <div className="page-appearance">
+                <h1>Find Weather Info Now!</h1>
+                <h4>Created by Thomas in 2018</h4>
+                <ActionButton />
+                <CityProfile
+                    name={cityInfo.name}
+                    state={cityInfo.state}
+                    population={cityInfo.population}
+                    description={cityInfo.description}
+                />
+            </div>
+        );
+    }
+}
+
 const cityInfo = {
     name: "Seattle",
     state: "Washington",
@@ -43,14 +68,15 @@ const cityInfo = {
 }
 
 ReactDOM.render(
-    <div>
-        <ActionButton />
-        <CityProfile
-            name={cityInfo.name}
-            state={cityInfo.state}
-            population={cityInfo.population}
-            description={cityInfo.description}
-        />
-    </div>,
+    // <div>
+    //     <ActionButton />
+    //     <CityProfile
+    //         name={cityInfo.name}
+    //         state={cityInfo.state}
+    //         population={cityInfo.population}
+    //         description={cityInfo.description}
+    //     />
+    // </div>,
+    <WeatherInterface />,
     document.getElementById('root')
   );
