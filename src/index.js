@@ -27,49 +27,62 @@ library.add(faCheckSquare, faCoffee, faCloud);
 function CityProfile(props) {
     return (
         <div>
-            <FontAwesomeIcon icon="cloud" className="title"/>
-            <h1>{props.name}, {props.state}</h1>
-            <h2>Population: {props.population}</h2>
-            <h3 className="text-format">{props.description}</h3>
+            <h3>Current conditions in: {props.name}, {props.state}</h3>
+            <div className="same-line">
+                <table>
+                    <tr>
+                        <td>
+                            <FontAwesomeIcon icon="cloud" className="weather-icon"/>
+                        </td>
+                        <td>                
+                            <p className="temperature">72</p>
+                            <p>°F</p>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            {/* <h3 className="text-format">{props.description}</h3> */}
         </div>
     );
 }
 
 //Search functionality component
-class ActionButton extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {clicks: 0};
-        this.handleClick = this.handleClick.bind(this);
-    }
+// class ActionButton extends React.Component {
+//     constructor(props) {
+//         super(props);
+//         this.state = {clicks: 0};
+//         this.handleClick = this.handleClick.bind(this);
+//     }
 
-    handleClick() {
-        this.setState(prevState => ({
-            clicks: prevState.clicks + 1
-        }));
-    }
+//     handleClick() {
+//         this.setState(prevState => ({
+//             clicks: prevState.clicks + 1
+//         }));
+//     }
 
-    render() {
-        return (
-            <div>
-                <h3>The button has been pressed {this.state.clicks} times.</h3>
-                <button type="button" onClick={this.handleClick}>Click Me</button>
-            </div>
-        );
-    }
-}
+//     render() {
+//         return (
+//             <div>
+//                 <h3>The button has been pressed {this.state.clicks} times.</h3>
+//                 <button type="button" onClick={this.handleClick}>Click Me</button>
+//             </div>
+//         );
+//     }
+// }
 
 //The main component
 class WeatherInterface extends React.Component {
-    constructor(props) {
-        super(props);
-    }
+    // constructor(props) {
+    //     super(props);
+    // }
 
     render() {
         return (
             <div className="page-appearance">
                 <h1 className="title">instantWeather</h1>
-                <h4>Made by Thomas with React in 2018</h4>
+                <form>
+                    <input type="text" placeholder="Enter a city here"/>
+                </form>
                 <CityProfile
                     name={cityInfo.name}
                     state={cityInfo.state}

@@ -1,4 +1,8 @@
-@import url("https://fonts.googleapis.com/css?family=Montserrat:300,400");
+@import url("https://fonts.googleapis.com/css?family=Montserrat:300,400,600");
+
+html {
+  height: 100%;
+}
 
 body {
   margin: 0;
@@ -8,11 +12,15 @@ body {
   text-align: center;
   color: white;
 
-  background: rgb(166,137,196);
-  background: -moz-linear-gradient(146deg, rgba(166,137,196,1) 0%, rgba(197,255,222,1) 100%);
-  background: -webkit-linear-gradient(146deg, rgba(166,137,196,1) 0%, rgba(197,255,222,1) 100%);
-  background: linear-gradient(146deg, rgba(166,137,196,1) 0%, rgba(197,255,222,1) 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#a689c4",endColorstr="#c5ffde",GradientType=1);
+  background: rgb(83,69,98);
+  background: -moz-linear-gradient(146deg, rgba(83,69,98,1) 0%, rgba(137,179,155,1) 100%);
+  background: -webkit-linear-gradient(146deg, rgba(83,69,98,1) 0%, rgba(137,179,155,1) 100%);
+  background: linear-gradient(146deg, rgba(83,69,98,1) 0%, rgba(137,179,155,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#534562",endColorstr="#89b39b",GradientType=1); 
+
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 button {
@@ -21,13 +29,36 @@ button {
   font-style: italic;
 }
 
+input {
+  font-size: 150%;
+  background-color: rgb(235, 228, 240);
+  color: #444;
+  border: 1px solid #444;
+}
+
+p {
+  display: inherit;
+  vertical-align: text-top;
+}
+
 .title {
   font-size: 300%;
+}
+
+.weather-icon {
+  vertical-align: text-top;
+  font-size: 300%;
+  display: inherit;
 }
 
 .page-appearance {
   width: 80%;
   margin: auto;
+
+  height: 100%;
+  position: relative;
+  top: 50%;
+  transform: perspective(1px) translateY(+30%);
 }
 
 .text-format {
@@ -35,3 +66,14 @@ button {
   font-weight: 300;
 }
 
+.temperature {
+  color: rgb(224, 224, 172);
+  font-size: 400%;
+  font-weight: 600;
+  margin: 0px;
+  /* text-shadow: 2px 2px 2px rgba(39, 34, 43, 0.3); */
+}
+
+.same-line {
+  display: inline-block;
+}
