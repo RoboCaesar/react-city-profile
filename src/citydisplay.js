@@ -2,11 +2,13 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faCheckSquare, faCoffee, faCloud } from '@fortawesome/free-solid-svg-icons'
+import {apikey} from './apikey.json';
 
 library.add(faCheckSquare, faCoffee, faCloud);
 
 export class CityData extends React.Component {
     constructor() {
+        console.log("Hello!!!");
         super();
         this.state= {
             error: null,
@@ -15,7 +17,7 @@ export class CityData extends React.Component {
         }
     }
     componentDidMount() {
-        fetch('http://api.openweathermap.org/data/2.5/weather?q=ho%20chi%20minh%20city&appid=29efb2fd25250f99dcc58c4a48c87ccb')
+        fetch('http://api.openweathermap.org/data/2.5/weather?q=ho%20chi%20minh%20city&appid=' + apikey)
             .then((res) => res.json())
             .then((result) => {
                 this.setState({
@@ -30,6 +32,7 @@ export class CityData extends React.Component {
                 });
             }
         );
+
     }
     render() {
         const { error, isLoaded, cityData } = this.state;
@@ -43,15 +46,17 @@ export class CityData extends React.Component {
                     <h3>Current conditions in: {cityData.name}, Vietnam</h3>
                     <div className="same-line">
                         <table>
+                            <tbody>
                             <tr>
-                                <td>
-                                    <FontAwesomeIcon icon="cloud" className="weather-icon"/>
-                                </td>
-                                <td>                
-                                    <p className="temperature">{cityData.main.temp - 273.15}</p>
-                                    <p>°C</p>
-                                </td>
-                            </tr>
+                                    <td>
+                                        <FontAwesomeIcon icon="cloud" className="weather-icon"/>
+                                    </td>
+                                    <td>                
+                                        <p className="temperature">{cityData.main.temp - 273.15}</p>
+                                        <p>°C</p>
+                                    </td>
+                                </tr>
+                            </tbody>
                         </table>
                     </div>
                     <div className="other-info">

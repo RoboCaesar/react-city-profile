@@ -6,7 +6,6 @@ import './index.css';
 import {CityData} from './citydisplay.js';
 
 
-
 //Component for basic city info
 // function CityProfile(props) {
 //     return (
