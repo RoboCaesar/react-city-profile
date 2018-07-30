@@ -6,11 +6,28 @@ import {apikey} from './apikey.json';
 
 library.add(faCheckSquare, faCoffee, faCloud);
 
+function giveDirection(degrees) {
+    let adjustedDegrees = degrees + 11.25; //Adjusting the degrees makes it easier to get the direction.
+    if (adjustedDegrees > 360) adjustedDegrees -= 360;
+    let directions = [
+        'N', 'NNE', 'NE',
+        'ENE', 'E', 'ESE',
+        'SE', 'SSE', 'S',
+        'SSW', 'SW', 'WSW',
+        'W', 'WNW', 'NW', 'NNW'
+    ];
+
+    let directionIndex = Math.floor(adjustedDegrees/22.50);
+
+    return directions[directionIndex];
+}
+
 export class CityData extends React.Component {
     constructor() {
         console.log("Hello!!!");
         super();
         this.state= {
+            currentCity: "Ho Chi Minh City",
             error: null,
             isLoaded: false,
             cityData: [],
@@ -43,6 +60,9 @@ export class CityData extends React.Component {
         } else {
             return (
                 <div>
+                    <form>
+                        <input type="text" placeholder="Enter a city here"/>
+                    </form>
                     <h3>Current conditions in: {cityData.name}, Vietnam</h3>
                     <div className="same-line">
                         <table>
@@ -60,11 +80,26 @@ export class CityData extends React.Component {
                         </table>
                     </div>
                     <div className="other-info">
-                        <p>Barometric pressure: {cityData.main.pressure} mb/hPa</p>
-                        <p>Humidity: {cityData.main.humidity}%</p>
-                        <p>Wind speed: {cityData.wind.speed} km/h</p>
-                        <p>Wind direction: NNW or something </p>
-
+                        <table id="weather-table">
+                            <tbody>
+                                <tr>
+                                    <td>Barometric pressure</td>
+                                    <td>{cityData.main.pressure} mb/hPa</td>
+                                </tr>
+                                <tr>
+                                    <td>Humidity</td>
+                                    <td>{cityData.main.humidity}%</td>
+                                </tr>
+                                <tr>
+                                    <td>Wind speed</td>
+                                    <td>{cityData.wind.speed} km/h</td>
+                                </tr>
+                                <tr>
+                                    <td>Wind direction</td>
+                                    <td>{cityData.wind.deg} -> {giveDirection(cityData.wind.deg)}</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             );

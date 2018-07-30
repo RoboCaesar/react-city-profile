@@ -39,9 +39,6 @@ class WeatherInterface extends React.Component {
         return (
             <div className="page-appearance">
                 <h1 className="title">instantWeather</h1>
-                <form>
-                    <input type="text" placeholder="Enter a city here"/>
-                </form>
                 <CityData />
             </div>
         );
