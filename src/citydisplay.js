@@ -32,14 +32,29 @@ export class CityData extends React.Component {
             isLoaded: false,
             cityData: [],
         }
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
-    componentDidMount() {
-        fetch('http://api.openweathermap.org/data/2.5/weather?q=ho%20chi%20minh%20city&appid=' + apikey)
+
+    handleChange(event) {
+        this.setState({currentCity: event.target.value});
+      }
+
+    handleSubmit(event) {
+        this.setState({isLoaded: false});
+        console.log("Loading the data of: " + event.target.value);
+        this.loadCityData(this.state.currentCity);
+        event.preventDefault();
+    }
+
+    loadCityData(cityName) {
+        fetch('http://api.openweathermap.org/data/2.5/weather?q=' + cityName + '&appid=' + apikey)
+        //('http://api.openweathermap.org/data/2.5/weather?q=ho%20chi%20minh%20city&appid=' + apikey)
             .then((res) => res.json())
             .then((result) => {
                 this.setState({
+                    cityData: result,
                     isLoaded: true,
-                    cityData: result
                 });
             },
             (error) => {
@@ -49,8 +64,12 @@ export class CityData extends React.Component {
                 });
             }
         );
-
     }
+
+    componentDidMount() {
+        this.loadCityData(this.state.currentCity);
+    }
+
     render() {
         const { error, isLoaded, cityData } = this.state;
         if (error) {
@@ -60,8 +79,8 @@ export class CityData extends React.Component {
         } else {
             return (
                 <div>
-                    <form>
-                        <input type="text" placeholder="Enter a city here"/>
+                    <form onSubmit={this.handleSubmit}>
+                        <input type="text" value={this.state.value} onChange={this.handleChange} placeholder="Enter a city here"/>
                     </form>
                     <h3>Current conditions in: {cityData.name}, Vietnam</h3>
                     <div className="same-line">
@@ -72,13 +91,14 @@ export class CityData extends React.Component {
                                         <FontAwesomeIcon icon="cloud" className="weather-icon"/>
                                     </td>
                                     <td>                
-                                        <p className="temperature">{cityData.main.temp - 273.15}</p>
+                                        <p className="temperature">{(cityData.main.temp - 273.15).toFixed(1)}</p>
                                         <p>°C</p>
                                     </td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
+                    <p>Length: {cityData.length}</p>
                     <div className="other-info">
                         <table id="weather-table">
                             <tbody>
