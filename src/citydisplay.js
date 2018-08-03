@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faCheckSquare, faCoffee, faCloud } from '@fortawesome/free-solid-svg-icons'
 import {apikey} from './apikey.json';
+import {getCountryName} from './countrylist.js';
 
 library.add(faCheckSquare, faCoffee, faCloud);
 
@@ -82,7 +83,7 @@ export class CityData extends React.Component {
                     <form onSubmit={this.handleSubmit}>
                         <input type="text" value={this.state.value} onChange={this.handleChange} placeholder="Enter a city here"/>
                     </form>
-                    <h3>Current conditions in: {cityData.name}, Vietnam</h3>
+                    <h3>Current conditions in: {cityData.name}, {getCountryName(cityData.sys.country)}</h3>
                     <div className="same-line">
                         <table>
                             <tbody>
@@ -98,7 +99,7 @@ export class CityData extends React.Component {
                             </tbody>
                         </table>
                     </div>
-                    <p>Length: {cityData.length}</p>
+
                     <div className="other-info">
                         <table id="weather-table">
                             <tbody>

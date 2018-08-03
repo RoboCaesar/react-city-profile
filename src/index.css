@@ -57,11 +57,11 @@ p {
 .page-appearance {
   width: 80%;
   margin: auto;
-
-  height: 100%;
+  padding-top: 5%;
+  /* height: 100%;
   position: relative;
   top: 50%;
-  transform: perspective(1px) translateY(+30%);
+  transform: perspective(1px) translateY(+30%); */
 }
 
 .text-format {
