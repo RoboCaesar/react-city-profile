@@ -1,11 +1,11 @@
 import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { faCheckSquare, faCoffee, faCloud } from '@fortawesome/free-solid-svg-icons'
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+// import { library } from '@fortawesome/fontawesome-svg-core'
+// import { faCheckSquare, faCoffee, faCloud } from '@fortawesome/free-solid-svg-icons'
 import {apikey} from './apikey.json';
 import {getCountryName} from './countrylist.js';
 
-library.add(faCheckSquare, faCoffee, faCloud);
+//library.add(faCheckSquare, faCoffee, faCloud);
 
 function giveDirection(degrees) {
     let adjustedDegrees = degrees + 11.25; //Adjusting the degrees makes it easier to get the direction.
@@ -87,9 +87,9 @@ export class CityData extends React.Component {
                     <div className="same-line">
                         <table>
                             <tbody>
-                            <tr>
+                                <tr>
                                     <td>
-                                        <FontAwesomeIcon icon="cloud" className="weather-icon"/>
+                                        <img src={require("./weather_icons/" + cityData.weather[0].icon + ".svg")} alt="current weather icon"/>
                                     </td>
                                     <td>                
                                         <p className="temperature">{(cityData.main.temp - 273.15).toFixed(1)}</p>

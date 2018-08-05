@@ -251,7 +251,7 @@
             'Zimbabwe' : 'ZW'
         }
     
-        let len = nameCountries.length;
+        //let len = nameCountries.length;
         let countryCode = inputValue.toUpperCase();
     
         for (let name in nameCountries) {
