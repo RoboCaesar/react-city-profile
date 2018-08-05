@@ -32,6 +32,7 @@ export class CityData extends React.Component {
             error: null,
             isLoaded: false,
             cityData: [],
+            backgroundType: 'default'
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -57,6 +58,16 @@ export class CityData extends React.Component {
                     cityData: result,
                     isLoaded: true,
                 });
+                let timeOfDay = result.weather[0].icon[result.weather[0].icon.length - 1];
+                if (timeOfDay === 'd') {
+                    document.body.classList.remove('default-color');
+                    document.body.classList.remove('night-gradient');
+                    document.body.classList.add('day-gradient');
+                } else {
+                    document.body.classList.remove('default-color');
+                    document.body.classList.add('night-gradient');
+                    document.body.classList.remove('day-gradient');                    
+                }    
             },
             (error) => {
                 this.setState({
