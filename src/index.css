@@ -23,6 +23,23 @@ body {
   background-size: cover; */
 
   border: 1px solid transparent;
+  transition: background 5s;
+}
+
+body.default-color {
+  background: rgb(83,69,98);
+  background: -moz-linear-gradient(146deg, rgba(83,69,98,1) 0%, rgba(137,179,155,1) 100%);
+  background: -webkit-linear-gradient(146deg, rgba(83,69,98,1) 0%, rgba(137,179,155,1) 100%);
+  background: linear-gradient(146deg, rgba(83,69,98,1) 0%, rgba(137,179,155,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#534562",endColorstr="#89b39b",GradientType=1); 
+}
+
+body.day-gradient {
+  background: orangered;
+}
+
+body.night-gradient {
+  background: purple;
 }
 
 button {
@@ -53,6 +70,15 @@ p {
   font-size: 300%;
   display: inherit;
 }
+
+#Dibujo {
+  fill: #FFF;
+}
+
+.css-icon {
+  fill: #FFF;
+}
+
 
 .page-appearance {
   width: 80%;
