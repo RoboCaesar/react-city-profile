@@ -37,10 +37,7 @@ class WeatherInterface extends React.Component {
 
     render() {
         return (
-            <div className="page-appearance">
-                <h1 className="title">instantWeather</h1>
-                <CityData />
-            </div>
+            <CityData />
         );
     }
 }

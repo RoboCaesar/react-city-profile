@@ -60,13 +60,13 @@ export class CityData extends React.Component {
                 });
                 let timeOfDay = result.weather[0].icon[result.weather[0].icon.length - 1];
                 if (timeOfDay === 'd') {
-                    document.body.classList.remove('default-color');
-                    document.body.classList.remove('night-gradient');
-                    document.body.classList.add('day-gradient');
+                    // document.body.classList.remove('default-color');
+                    // document.body.classList.remove('night-gradient');
+                    // document.body.classList.add('day-gradient');
                 } else {
-                    document.body.classList.remove('default-color');
-                    document.body.classList.add('night-gradient');
-                    document.body.classList.remove('day-gradient');                    
+                    // document.body.classList.remove('default-color');
+                    // document.body.classList.add('night-gradient');
+                    // document.body.classList.remove('day-gradient');                    
                 }    
             },
             (error) => {
@@ -90,11 +90,12 @@ export class CityData extends React.Component {
             return <div>Loading Weather Data....</div>;
         } else {
             return (
-                <div>
+                <div id="night-gradient" className="page-appearance">
+                    <h1 className="title">instantWeather</h1>
                     <form onSubmit={this.handleSubmit}>
                         <input type="text" value={this.state.value} onChange={this.handleChange} placeholder="Enter a city here"/>
                     </form>
-                    <h3>Current conditions in: {cityData.name}, {getCountryName(cityData.sys.country)}</h3>
+                    <h3 style={{paddingTop: '2%', margin: '0px'}}>Current conditions in: {cityData.name}, {getCountryName(cityData.sys.country)}</h3>
                     <div className="same-line">
                         <table>
                             <tbody>

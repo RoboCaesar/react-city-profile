@@ -12,7 +12,7 @@ body {
   text-align: center;
   color: white;
 
-  background: darkblue;
+  /* background: darkblue; */
 
   height: 99%;
   /* background-repeat: no-repeat;
@@ -36,14 +36,16 @@ body.day-gradient {
   background: -webkit-linear-gradient(32deg, rgba(143,74,74,1) 0%, rgba(195,173,84,1) 100%);
   background: linear-gradient(32deg, rgba(143,74,74,1) 0%, rgba(195,173,84,1) 100%);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#8f4a4a",endColorstr="#c3ad54",GradientType=1); 
+  transition: background 5s;
 }
 
-body.night-gradient {
+#night-gradient {
   background: rgb(83,69,98);
   background: -moz-linear-gradient(146deg, rgba(83,69,98,1) 0%, rgba(137,179,155,1) 100%);
   background: -webkit-linear-gradient(146deg, rgba(83,69,98,1) 0%, rgba(137,179,155,1) 100%);
   background: linear-gradient(146deg, rgba(83,69,98,1) 0%, rgba(137,179,155,1) 100%);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#534562",endColorstr="#89b39b",GradientType=1); 
+  transition: background 5s;
 }
 
 button {
@@ -85,13 +87,14 @@ p {
 
 
 .page-appearance {
-  width: 80%;
-  margin: auto;
-  padding-top: 5%;
-  /* height: 100%;
-  position: relative;
-  top: 50%;
-  transform: perspective(1px) translateY(+30%); */
+  width: 100%;
+  padding: 0%;
+  margin: 0 auto;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  height: 100%;
 }
 
 .text-format {
@@ -109,6 +112,7 @@ p {
 
 .same-line {
   display: inline-block;
+  margin: 0 auto;
 }
 
 #weather-table {
