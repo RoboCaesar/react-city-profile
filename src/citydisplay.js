@@ -32,7 +32,7 @@ export class CityData extends React.Component {
             error: null,
             isLoaded: false,
             cityData: [],
-            backgroundType: 'default'
+            backgroundType: 'default-color'
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -60,13 +60,13 @@ export class CityData extends React.Component {
                 });
                 let timeOfDay = result.weather[0].icon[result.weather[0].icon.length - 1];
                 if (timeOfDay === 'd') {
-                    // document.body.classList.remove('default-color');
-                    // document.body.classList.remove('night-gradient');
-                    // document.body.classList.add('day-gradient');
+                    this.setState({
+                        backgroundType: 'day-gradient'
+                    });
                 } else {
-                    // document.body.classList.remove('default-color');
-                    // document.body.classList.add('night-gradient');
-                    // document.body.classList.remove('day-gradient');                    
+                    this.setState({
+                        backgroundType: 'night-gradient'
+                    });                
                 }    
             },
             (error) => {
@@ -83,14 +83,18 @@ export class CityData extends React.Component {
     }
 
     render() {
-        const { error, isLoaded, cityData } = this.state;
+        let returnObject;
+        const { error, isLoaded, cityData, backgroundType } = this.state;
         if (error) {
-            return <div>Error: {error.message}</div>;
+            returnObject = <div id={backgroundType} className="page-appearance">Error: {error.message}</div>;
+            //return <div id={backgroundType} className="page-appearance">Error: {error.message}</div>;
         } else if (!isLoaded) {
-            return <div>Loading Weather Data....</div>;
+            returnObject = <div id={backgroundType} className="page-appearance">Loading Weather Data....</div>;
+            //return <div id={backgroundType} className="page-appearance">Loading Weather Data....</div>;
         } else {
-            return (
-                <div id="night-gradient" className="page-appearance">
+            //return (
+            returnObject = 
+                <div id={backgroundType} className="page-appearance">
                     <h1 className="title">instantWeather</h1>
                     <form onSubmit={this.handleSubmit}>
                         <input type="text" value={this.state.value} onChange={this.handleChange} placeholder="Enter a city here"/>
@@ -135,7 +139,9 @@ export class CityData extends React.Component {
                         </table>
                     </div>
                 </div>
-            );
+            ;
         }
+
+        return returnObject;
     }
 }

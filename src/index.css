@@ -22,7 +22,7 @@ body {
   transition: background 5s;
 }
 
-body.default-color {
+#default-color {
   background: rgb(111,74,143);
   background: -moz-linear-gradient(236deg, rgba(111,74,143,1) 0%, rgba(195,173,84,1) 100%);
   background: -webkit-linear-gradient(236deg, rgba(111,74,143,1) 0%, rgba(195,173,84,1) 100%);
@@ -30,7 +30,7 @@ body.default-color {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#6f4a8f",endColorstr="#c3ad54",GradientType=1);
 }
 
-body.day-gradient {
+#day-gradient {
   background: rgb(143,74,74);
   background: -moz-linear-gradient(32deg, rgba(143,74,74,1) 0%, rgba(195,173,84,1) 100%);
   background: -webkit-linear-gradient(32deg, rgba(143,74,74,1) 0%, rgba(195,173,84,1) 100%);
@@ -95,6 +95,7 @@ p {
   justify-content: center;
   flex-direction: column;
   height: 100%;
+  transition: background 5s;
 }
 
 .text-format {
